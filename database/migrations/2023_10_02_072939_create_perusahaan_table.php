@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('perusahaan', function (Blueprint $table) {
-            $table->integer('id_perusahaan')->autoIncrement();
+            $table->id('id_perusahaan');
             $table->string('nama_perusahaan');
-            $table->string('alamat');
+            $table->string('deskripsi');
+            $table->string('alamat_perusahaan');
             $table->string('contact_person');
+            // ID Ubah menjadi ID JURUSAN KALO UDH FIX
             $table->string('jurusan');
+            $table->string('gambar_perusahaan')->nullable();
             $table->timestamps();
         });
     }

@@ -1,10 +1,10 @@
 <aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 overflow-x-auto"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <a href="/admin/superadmin" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-bars text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     </div>
@@ -12,7 +12,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/daftarperusahaan"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-building text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/daftarsiswa"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-user-tie text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/daftarguru"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-chalkboard-user text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -39,25 +39,16 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/daftarakun"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
-                        <i class="fa-solid fa-users-rectangle text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <i class="fa-solid fa-address-card text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     </div>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Akun Kurikulum</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Daftar Akun</span>
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <div class="w-1/12 flex justify-center items-center">
-                        <i class="fa-solid fa-users-between-lines text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    </div>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Akun Hubin</span>
-                </a>
-            </li>
-            <li>
-                <a href="#"
+                <a href="/admin/superadmin/angkatan"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-calendar-days text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -66,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/jurusan"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-user-gear text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -75,7 +66,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/superadmin/history"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-clock-rotate-left text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>

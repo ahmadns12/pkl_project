@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/kakom/daftarsiswa"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
                         <i class="fa-solid fa-user-tie text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -39,14 +39,29 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="/admin/kakom/daftarguru"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">
-                        <i class="fa-solid fa-bell text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <i class="fa-solid fa-chalkboard-user text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     </div>
-                    <span class="flex-1 ml-3 whitespace-nowrap">Notifikasi</span>
-                    <span
-                        class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Daftar Guru</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/kakom/akunsiswa"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="w-1/12 flex justify-center items-center">
+                        <i class="fa-solid fa-address-card text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    </div>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Akun Siswa</span>
+                </a>
+            </li><li>
+                <a href="/admin/kakom/akunpembimbing"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="w-1/12 flex justify-center items-center">
+                        <i class="fa-solid fa-people-arrows text-xl text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    </div>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Akun Pembimbing</span>
                 </a>
             </li>
             <li>

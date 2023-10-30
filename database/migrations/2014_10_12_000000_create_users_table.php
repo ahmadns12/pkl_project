@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->integer('nip')->nullable();
-            $table->integer('nis')->nullable();
+            $table->integer('id_siswa')->nullable();
+            $table->integer('id_guru')->nullable();
             $table->integer('is_choosen')->nullable();
-            $table->enum('role',['hubin','kurikulum','kakom','superadmin','siswa'])->default('siswa');
+            $table->enum('role',['hubin','kurikulum','kakom','superadmin','siswa','pembimbing'])->default('siswa');
             $table->integer('angkatan');
             $table->rememberToken();
             $table->timestamps();

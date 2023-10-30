@@ -23,34 +23,7 @@
 
 <body>
     {{-- Navbar Header --}}
-    <nav class="font-poppins fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center justify-start">
-                    <button id="toggleDrawer" data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
-                        aria-controls="logo-sidebar" type="button"
-                        class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                        <span class="sr-only">Open sidebar</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" fill-rule="evenodd"
-                                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
-                            </path>
-                        </svg>
-                    </button>
-                    <a href="#" class="flex ml-2 md:mr-24">
-                        <img src="{{asset('img/logo_smk.png')}}" class="h-8 mr-3" alt="Logo Brand" />
-                        <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">PKL Skuy</span>
-                    </a>
-                </div>
-                <div class="flex items-center">
-                    <div class="flex items-center ml-3">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('Pengajuan.Components.headerNavbar')
     {{-- Navbar Header-end --}}
 
     {{-- Sidebar --}}
@@ -71,22 +44,98 @@
     {{-- Content --}}
     <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 rounded-lg dark:border-gray-700 mt-14">
-            <h2 class="text-xl">Halo Selamat Datang <span class="font-bold italic">{{Auth::user()->name}}</span></h2>
-            <a href="/logout">logout</a>
-            <ul>
-                @if (Auth::user()->role == "hubin")
-                    <li>Menu hubin</li>
-                @endif
-                @if (Auth::user()->role == "kurikulum")
-                    <li>Menu kurikulum</li>
-                @endif
-                @if (Auth::user()->role == "kakom")
-                    <li>Menu kakom</li>
-                @endif
-                @if (Auth::user()->role == "superadmin")
-                    <li>Menu superadmin</li>
-                @endif
-            </ul>
+            <div class="p-2">
+                <h2 class="text-xl font-bold font-poppins">Dashboard <span>{{Auth::user()->role}}</span></h2>
+                <span class="font-poppins">Daftar terbaru siswa yang mengajukan formulir.</span>
+                <ul>
+                    @if (Auth::user()->role == "hubin")
+                        
+                    @endif
+                    @if (Auth::user()->role == "kurikulum")
+                        
+                    @endif
+                    @if (Auth::user()->role == "kakom")
+                        
+                    @endif
+                    @if (Auth::user()->role == "superadmin")
+                        
+                    @endif
+                </ul>
+                <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
+                    <div class="block bg-transparent w-full overflow-x-auto">
+                        @foreach ($formulir as $item)
+                        <div class="flex justify-between border border-gray-300 p-3 rounded-xl w-full mb-2">
+                            <div class="w-3/12 font-poppins font-semibold text-center line-clamp-1 overflow-hidden">
+                                {{$item->siswa->nama_siswa}}
+                            </div>
+                            <div class="flex justify-center items-center w-3/12 font-poppins font-semibold text-gray-400 text-center">
+                                {{$item->perusahaan->nama_perusahaan}}
+                            </div>
+                            <div class="flex justify-center items-center w-3/12 font-poppins font-semibold text-center">
+                                Pembimbing
+                            </div>
+                            <div class="flex justify-center items-center w-3/12 font-poppins font-semibold text-gray-400 text-center">
+                                {{$item->created_at}}
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="flex w-full">
+                    <div class="w-full flex flex-col">
+                        <div class="flex">
+                            <div class="relative flex flex-col shadow-lg rounded-lg p-4 w-6/12 mr-3">
+                                <span class="font-semibold font-poppins text-gray-400">Total siswa yang mengajukan</span>
+                                <span class="font-bold font-poppins text-3xl">{{$siswaPengajuan}}</span>
+                                <div class="w-full flex justify-end">
+                                    @if(Auth::user()->role == 'kakom')
+                                    <a href="/admin/kakom/daftarsiswa">
+                                    @else
+                                    <a href=""></a>
+                                    @endif
+                                        <span class="p-2 border border-blue-500 text-blue-500 font-poppins font-semibold rounded-xl text-sm hover:bg-blue-500 hover:text-white transition ease-linear">
+                                            Lebih Detail
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="relative flex flex-col shadow-lg rounded-lg p-4 w-6/12 mr-3">
+                                <span class="font-semibold font-poppins text-gray-400">Total siswa yang monitoring</span>
+                                <span class="font-bold font-poppins text-3xl">{{$siswaMonitoring}}</span>
+                                <div class="w-full flex justify-end">
+                                    @if(Auth::user()->role == 'kakom')
+                                    <a href="/admin/kakom/daftarsiswa">
+                                    @else
+                                    <a href=""></a>
+                                    @endif
+                                        <span class="p-2 border border-blue-500 text-blue-500 font-poppins font-semibold rounded-xl text-sm hover:bg-blue-500 hover:text-white transition ease-linear">
+                                            Lebih Detail
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex flex-col shadow-lg rounded-lg p-4 w-4/12 bg-[#7091F5]">
+                        <span class="font-semibold font-poppins text-white">Guru Pembimbing</span>
+                        @foreach ($pembimbing as $item)
+                        <div class="w-full bg-white p-2 rounded-xl mt-2 flex justify-center items-center">
+                            <i class="fa-solid fa-user mr-4 flex justify-center items-center"></i>
+                            <span class="font-poppins font-semibold line-clamp-1 overflow-hidden">{{$item->guru->nama_guru}}</span>
+                        </div>
+                        @endforeach
+                        @if(Auth::user()->role == 'kakom')
+                        <a href="/admin/kakom/akunpembimbing">
+                        @else
+                        <a href=""></a>
+                        @endif
+                            <div class="w-full border border-black p-2 font-poppins font-bold shadow-lg rounded-xl mt-2 flex justify-center items-center hover:bg-white hover:border-white hover:text-[#7091F5] transition ease-linear">
+                                LIHAT LEBIH
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     {{-- Content-end --}}

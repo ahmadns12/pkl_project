@@ -33,21 +33,21 @@
                     <!-- Username input -->
                     <div class="relative mb-4 border-black border-4 rounded-md">
                         <input type="text"
-                              class="peer block min-h-[auto] w-full rounded-0 px-3 py-[0.20rem] leading-[2.15] bg-white"
+                              class="peer outline-none block min-h-[auto] w-full rounded-0 px-3 py-[0.20rem] leading-[2.15] bg-white"
                             placeholder="Username" name="username" />
                     </div>
 
                     <!-- Password input -->
                     <div class="relative mb-6 border-black border-4 rounded-md">
                         <input type="password"
-                            class="peer block min-h-[auto] w-full rounded-0 px-3 py-[0.20rem] leading-[2.15] bg-white"
+                            class="peer outline-none block min-h-[auto] w-full rounded-0 px-3 py-[0.20rem] leading-[2.15] bg-white"
                             placeholder="Password" name="password" />
                     </div>
 
                     <!-- Submit button -->
                     <div class="flex items-center justify-center">
                         <button type="submit"
-                            class="inline-block w-6/12 rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal bg-black text-white font-poppins font-bold">
+                            class="inline-block w-6/12 rounded bg-primary px-7 pb-2.5 pt-3 text-sm uppercase leading-normal bg-black text-white font-poppins font-bold">
                             LOG IN
                         </button>
                     </div>

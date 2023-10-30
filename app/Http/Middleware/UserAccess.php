@@ -18,6 +18,6 @@ class UserAccess
         if(auth()->user()->role == $role){
             return $next($request);
         }
-        return response()->json("Anda tidak diperbolehkan untuk masuk ke halaman ini");
+        return response()->view('Components.NoAkses.noakses');
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //Login Admin Section
     function loginView(){
         return view('login');
     }

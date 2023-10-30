@@ -41,6 +41,7 @@ class DummyUserSeeder extends Seeder
             [
                 'username'=>'Ahmad',
                 'role'=>'siswa',
+                'id_siswa'=>'1',
                 'angkatan'=>'48',
                 'is_choosen'=>'0',
                 'password'=>bcrypt('123456')
@@ -49,6 +50,14 @@ class DummyUserSeeder extends Seeder
                 'username'=>'Altria',
                 'role'=>'siswa',
                 'is_choosen'=>'1',
+                'id_siswa'=>'2',
+                'angkatan'=>'48',
+                'password'=>bcrypt('123456')
+            ],
+            [
+                'username'=>'Sensei',
+                'role'=>'pembimbing',
+                'id_guru'=>'1',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],

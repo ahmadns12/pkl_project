@@ -12,6 +12,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+    public $timestamps = true;
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'id_siswa');
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'id_guru');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +33,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'id_siswa',
         'nip',
         'nis',
         'is_choosen',

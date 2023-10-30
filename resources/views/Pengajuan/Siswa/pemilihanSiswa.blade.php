@@ -29,8 +29,7 @@
                 <div class="bg-black w-[10px] h-[400px] mx-12 rounded-md hidden lg:inline"></div>
                 {{-- Card --}}
                 <div class="p-6 lg:p-0">
-                    <div class="lg:mt-0 shadow-lg overflow-hidden p-7 bg-white rounded-xl cursor-pointer" id="card-monitoring"
-                    onclick="window.location='{{ route('monitoringSiswa') }}'">
+                    <div class="lg:mt-0 shadow-lg overflow-hidden p-7 bg-white rounded-xl cursor-pointer" id="card-monitoring" onclick="window.location='{{ route('monitoringSiswa') }}'">
                     <div class="flex justify-center items-center">
                         <img class="w-[300px]" src="{{ asset('img/monitor.png') }}" alt="">
                     </div>
