@@ -999,7 +999,7 @@ class AdminController extends Controller
         $totalangkatan = DB::table('angkatan')->count();
         $daftarangkatan = DB::table('angkatan')->paginate(10);
 
-        return view('Pengajuan.Admin.angkatan',[
+        return view('Pengajuan.Admin.jurusan',[
             'dataangkatan'=>$daftarangkatan,
             'totalangkatan'=>$totalangkatan
         ]);
