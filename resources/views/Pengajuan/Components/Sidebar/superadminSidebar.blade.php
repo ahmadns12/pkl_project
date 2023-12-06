@@ -12,6 +12,15 @@
                 </a>
             </li>
             <li>
+                <a href="/admin/superadmin/formsiswa"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <div class="w-1/12 flex justify-center items-center">
+                        <i class="fa-regular fa-folder-open text-lg text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    </div>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Formulir Siswa</span>
+                </a>
+            </li>
+            <li>
                 <a href="/admin/superadmin/daftarperusahaan"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <div class="w-1/12 flex justify-center items-center">

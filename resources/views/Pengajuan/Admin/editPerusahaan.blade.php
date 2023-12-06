@@ -107,14 +107,6 @@
                                         <input class="h-full w-full outline-none font-poppins" type="text" name="contact_person" value="{{$perusahaan->contact_person}}">
                                     </div>
                                 </div>
-                                <div class="w-full flex border-solid border rounded-lg mt-2">
-                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
-                                    </div>
-                                    <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan" value="{{$perusahaan->jurusan}}">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="w-full mt-3 flex items-end justify-end">
@@ -126,6 +118,7 @@
                 </div>
             </form>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

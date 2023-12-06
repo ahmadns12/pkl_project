@@ -13,18 +13,45 @@ class Siswa extends Model
     protected $primaryKey = 'id_siswa';
     public $timestamps = true;
 
-    public function user()
+    protected $fillable = [
+        'nis',
+        'nomor_telepon',
+        'alamat',
+        'sudah_memilih',
+    ];
+
+    function siswadetail()
+    {
+        return $this->belongsTo(Siswadetail::class,'id_siswadetail');
+    }
+
+    function user()
     {
         return $this->hasOne(User::class, 'id_siswa');
     }
 
-    public function guru()
+    function guru()
     {
         return $this->belongsTo(Guru::class, 'id_guru');
     }
 
-    public function formulir()
+    function formulir()
     {
-        return $this->hasOne(Formulir::class, 'id_siswa');
+        return $this->belongsTo(Formulir::class, 'id_formuir');
+    }
+
+    function permintaan()
+    {
+        return $this->hasMany(Permintaan::class, 'id_siswa');
+    }
+
+    function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class,'id_jurusan');
+    }
+
+    public function angkatan()
+    {
+        return $this->belongsTo(Angkatan::class,'id_angkatan');
     }
 }

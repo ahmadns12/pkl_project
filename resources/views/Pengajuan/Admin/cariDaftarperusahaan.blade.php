@@ -2,7 +2,7 @@
 <div class="p-1 w-1/2 block searchItems">
     <div class="w-full bg-gray-200 p-2 rounded-t-lg flex justify-between">
         <div class="font-bold text-md text-gray-500 bg-gray-300 rounded-lg p-1 px-3">{{$item->id_perusahaan}}</div>
-        @if(Auth::user()->role=='hubin' || Auth::user()->role == 'kakom' || Auth::user()->role == 'superadmin')
+        @if(Auth::user()->role=='hubin' || Auth::user()->role == 'superadmin')
         <div>
             @if(Auth::user()->role=='hubin')
             <a href="/admin/hubin/daftarperusahaan/edit/{{$item->id_perusahaan}}">
@@ -91,10 +91,10 @@
             <img src="{{asset('img/perusahaan/' . $item->gambar_perusahaan)}}" class="w-4/12 h-[180px] object-cover rounded-s-lg" alt="{{asset('img/perusahaan_image.jpeg')}}">
             <div class="w-full p-2 border border-gray-300 border-solid rounded-e-lg bg-white ml-2">
                 <div class="font-poppins font-bold text-md namaPerusahaan">{{$item->nama_perusahaan}}</div>
-                <div class="font-poppins text-sm line-clamp-2 overflow-hidden mt-1 deskripsiPerusahaan">{{$item->deskripsi}}</div>
+                <div class="font-poppins text-sm line-clamp-2 overflow-hidden mt-1">{{$item->deskripsi}}</div>
                 <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden mt-1">Contact Person: {{$item->contact_person}}</div>
                 <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Alamat: {{$item->alamat_perusahaan}}</div>
-                <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Jurusan: {{$item->jurusan}}</div>
+                <br>
                 <div class="font-bold font-poppins text-sm line-clamp-1 overflow-hidden"><i class="fa-solid fa-users mr-2 mt-2"></i>Kuota: 0/3</div>
             </div>
         </div>

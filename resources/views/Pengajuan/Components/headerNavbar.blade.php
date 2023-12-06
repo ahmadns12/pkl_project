@@ -16,10 +16,9 @@ class="font-poppins fixed top-0 z-50 w-full bg-white border-b border-gray-200 da
                 </svg>
             </button>
             <a href="#" class="flex ml-2 md:mr-24">
-                <img src="{{ asset('img/logo_smk.png') }}" class="h-8 mr-3" alt="Logo Brand" />
+                <img src="{{ asset('img/logo_pkl.png') }}" class="h-10 mr-3" alt="Logo Brand" />
                 <span
-                    class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">PKL
-                    Skuy</span>
+                    class="self-center text-xl font-semibold sm:text-xl whitespace-nowrap dark:text-white">Admin | Pengajuan PKL</span>
             </a>
         </div>
         <div class="flex items-center">

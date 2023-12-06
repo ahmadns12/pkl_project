@@ -104,6 +104,7 @@
                                     </div>
                                     <div class="w-8/12 p-1 rounded-l-lg">
                                         <select class="h-full w-full outline-none font-poppins" name="jenis_kelamin">
+                                            <option disabled>Jenis Kelamin</option>
                                             <option value="l">Laki-Laki</option>
                                             <option value="p">Perempuan</option>
                                         </select>
@@ -113,8 +114,14 @@
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
                                         <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
                                     </div>
-                                    <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan">
+                                    <div class="w-8/12 p-1 rounded-l-lg">
+                                        <select class="h-full w-full outline-none font-poppins" name="id_jurusan">
+                                            <option disabled>Jurusan</option>
+                                            @foreach ($jurusan as $item)
+                                            <option value="{{$item->id_jurusan}}">{{$item->nama_jurusan}}</option>
+                                            @endforeach
+                                            <option value="">Tidak Ada Jurusan / NA</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -136,6 +143,7 @@
                 </div>
             </form>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

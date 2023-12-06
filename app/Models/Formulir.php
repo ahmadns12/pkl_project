@@ -15,11 +15,16 @@ class Formulir extends Model
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'id_siswa');
+        return $this->hasMany(Siswa::class, 'id_formulir');
+    }
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class,'id_jurusan');
     }
     
-    public function perusahaan()
+    public function lowongan()
     {
-        return $this->belongsTo(Perusahaan::class, 'id_perusahaan');
+        return $this->belongsTo(Lowongan::class, 'id_lowongan');
     }
 }

@@ -58,6 +58,33 @@
                     </h2>
                 @endif
             </div>
+            <div class="flex">
+                <div class="w-3/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4">
+                    <span class="font-poppins font-semibold text-gray-500">Total Guru</span>
+                    <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalguru}}</span>
+                </div>
+
+                @if(Auth::user()->role=='hubin')
+                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruHubin') }}'">
+                    Tambah
+                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                </div>
+                @endif
+
+                @if(Auth::user()->role=='kakom')
+                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruKakom') }}'">
+                    Tambah
+                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                </div>
+                @endif
+
+                @if(Auth::user()->role=='superadmin')
+                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruSuperadmin') }}'">
+                    Tambah
+                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                </div>
+                @endif
+            </div>
             <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                 {{-- Search --}}
                 <div class="p-2 mb-2">
@@ -172,21 +199,38 @@
                                         <div class="font-poppins font-bold text-sm line-clamp-1 overflow-hidden mt-1">Jabatan: {{$item->jabatan}}</div>
                                         <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden mt-3">NIP: {{$item->nip}}</div>
                                         <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">NIK: {{$item->nik}}</div>
-                                        <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Jurusan: {{$item->jurusan}}</div>
+                                        <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden"> 
+                                            @if ($item->jurusan)
+                                                Jurusan: {{$item->jurusan->nama_jurusan}}
+                                            @else
+                                                Tidak Memiliki Jurusan / NA
+                                            @endif
+                                        </div>
                                         @if($item->jenis_kelamin == 'l')
                                             <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Kelamin: Laki-laki</div>
                                         @endif
                                         @if($item->jenis_kelamin == 'p')
                                             <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Kelamin: Perempuan</div>
                                         @endif
-                                        <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">ID Pembimbing: <span class="font-poppins font-bold">
-                                            @if ($item->user)
-                                            {{ ucfirst($item->user->id) }}
-                                            @else
-                                                Belum memiliki akun
-                                            @endif
-                                        </span>
-                                        </div>
+                                        @if ($item->user && $item->user->role == 'kakom')
+                                            <div class="font-bold font-poppins text-sm line-clamp-1 overflow-hidden text-red-500">Sebagai Kakom {{$item->jurusan->nama_jurusan}}
+                                            </div>
+                                        @elseif ($item->user && $item->user->role == 'hubin')
+                                            <div class="font-bold font-poppins text-sm line-clamp-1 overflow-hidden text-blue-500">Sebagai Hubin
+                                            </div>
+                                        @elseif ($item->user)
+                                            <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">ID Pembimbing: 
+                                                <span class="font-poppins font-bold">
+                                                    {{ ucfirst($item->user->id) }}
+                                                </span>
+                                            </div>
+                                        @else
+                                            <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">ID Pembimbing: 
+                                                <span class="font-poppins font-bold">
+                                                    Belum memiliki akun
+                                                </span>
+                                            </div>
+                                        @endif 
                                     </div>
                                 </div>
                                 <div class="w-full rounded-b-lg p-2 border border-gray-300 mt-2 font-poppins font-semibold bg-white">
@@ -208,35 +252,8 @@
                 </div>
                 {{ $dataguru->links('pagination::tailwind') }}
             </div>
-            
-            <div class="flex">
-                <div class="w-3/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4">
-                    <span class="font-poppins font-semibold text-gray-500">Total Guru</span>
-                    <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalguru}}</span>
-                </div>
-
-                @if(Auth::user()->role=='hubin')
-                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruHubin') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-
-                @if(Auth::user()->role=='kakom')
-                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruKakom') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-
-                @if(Auth::user()->role=='superadmin')
-                <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahGuruSuperadmin') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-            </div>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

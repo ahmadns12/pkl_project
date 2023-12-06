@@ -58,6 +58,26 @@
                     </h2>
                 @endif
             </div>
+            <div class="flex">
+                <div class="w-3/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4">
+                    <span class="font-poppins font-semibold text-gray-500">Total Perusahaan</span>
+                    <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalPerusahaan}}</span>
+                </div>
+
+                @if(Auth::user()->role=='hubin')
+                <div class="w-2/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahPerusahaanHubin') }}'">
+                    Tambah
+                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                </div>
+                @endif
+
+                @if(Auth::user()->role=='superadmin')
+                <div class="w-2/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahPerusahaanSuperadmin') }}'">
+                    Tambah
+                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                </div>
+                @endif
+            </div>
             <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                 {{-- Search --}}
                 <div class="p-2 mb-2">
@@ -70,7 +90,7 @@
                     <div class="p-1 w-1/2 block searchItems">
                         <div class="w-full bg-gray-200 p-2 rounded-t-lg flex justify-between">
                             <div class="font-bold text-md text-gray-500 bg-gray-300 rounded-lg p-1 px-3">{{$item->id_perusahaan}}</div>
-                            @if(Auth::user()->role=='hubin' || Auth::user()->role == 'kakom' || Auth::user()->role == 'superadmin')
+                            @if(Auth::user()->role=='hubin' || Auth::user()->role == 'superadmin')
                             <div>
                                 @if(Auth::user()->role=='hubin')
                                 <a href="/admin/hubin/daftarperusahaan/edit/{{$item->id_perusahaan}}">
@@ -159,10 +179,10 @@
                                 <img src="{{asset('img/perusahaan/' . $item->gambar_perusahaan)}}" class="w-4/12 h-[180px] object-cover rounded-s-lg" alt="{{asset('img/perusahaan_image.jpeg')}}">
                                 <div class="w-full p-2 border border-gray-300 border-solid rounded-e-lg bg-white ml-2">
                                     <div class="font-poppins font-bold text-md namaPerusahaan">{{$item->nama_perusahaan}}</div>
-                                    <div class="font-poppins text-sm line-clamp-2 overflow-hidden mt-1 deskripsiPerusahaan">{{$item->deskripsi}}</div>
+                                    <div class="font-poppins text-sm line-clamp-2 overflow-hidden mt-1">{{$item->deskripsi}}</div>
                                     <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden mt-1">Contact Person: {{$item->contact_person}}</div>
                                     <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Alamat: {{$item->alamat_perusahaan}}</div>
-                                    <div class="font-medium font-poppins text-sm line-clamp-1 overflow-hidden">Jurusan: {{$item->jurusan}}</div>
+                                    <br>
                                     <div class="font-bold font-poppins text-sm line-clamp-1 overflow-hidden"><i class="fa-solid fa-users mr-2 mt-2"></i>Kuota: 0/3</div>
                                 </div>
                             </div>
@@ -174,40 +194,8 @@
                 </div>
                 {{ $dataperusahaan->links('pagination::tailwind') }}
             </div>
-            
-            <div class="flex">
-                <div class="w-3/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4">
-                    <span class="font-poppins font-semibold text-gray-500">Total Perusahaan</span>
-                    <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalPerusahaan}}</span>
-                </div>
-                
-                <div class="w-3/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4">
-                    <span class="font-poppins font-semibold text-gray-500">Total Perusahaan Jurusan</span>
-                    <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">21</span>
-                </div>
-
-                @if(Auth::user()->role=='hubin')
-                <div class="w-2/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahPerusahaanHubin') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-
-                @if(Auth::user()->role=='kakom')
-                <div class="w-2/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahPerusahaanKakom') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-
-                @if(Auth::user()->role=='superadmin')
-                <div class="w-2/12 relative flex flex-col shadow-lg rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahPerusahaanSuperadmin') }}'">
-                    Tambah
-                    <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                </div>
-                @endif
-            </div>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

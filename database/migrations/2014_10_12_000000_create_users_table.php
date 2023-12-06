@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('nama_kurikulum')->nullable();
             $table->string('password');
             $table->integer('id_siswa')->nullable();
             $table->integer('id_guru')->nullable();
-            $table->integer('is_choosen')->nullable();
             $table->enum('role',['hubin','kurikulum','kakom','superadmin','siswa','pembimbing'])->default('siswa');
-            $table->integer('angkatan');
+            $table->integer('angkatan')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

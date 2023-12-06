@@ -47,29 +47,21 @@
             <div class="p-2">
                 <h2 class="text-xl font-bold font-poppins">Dashboard <span>{{Auth::user()->role}}</span></h2>
                 <span class="font-poppins">Daftar terbaru siswa yang mengajukan formulir.</span>
-                <ul>
-                    @if (Auth::user()->role == "hubin")
-                        
-                    @endif
-                    @if (Auth::user()->role == "kurikulum")
-                        
-                    @endif
-                    @if (Auth::user()->role == "kakom")
-                        
-                    @endif
-                    @if (Auth::user()->role == "superadmin")
-                        
-                    @endif
-                </ul>
                 <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                     <div class="block bg-transparent w-full overflow-x-auto">
                         @foreach ($formulir as $item)
                         <div class="flex justify-between border border-gray-300 p-3 rounded-xl w-full mb-2">
-                            <div class="w-3/12 font-poppins font-semibold text-center line-clamp-1 overflow-hidden">
-                                {{$item->siswa->nama_siswa}}
+                            <div class="w-3/12 font-poppins font-semibold text-center line-clamp-2 overflow-hidden">
+                                @if($item->siswa->isNotEmpty())
+                                    @foreach($item->siswa as $siswa)
+                                        {{$siswa->nama_siswa}}<br>
+                                    @endforeach
+                                @else
+                                    <span class="text-red-500">Error, data tidak ada di formulir ini lagi!</span>
+                                @endif
                             </div>
                             <div class="flex justify-center items-center w-3/12 font-poppins font-semibold text-gray-400 text-center">
-                                {{$item->perusahaan->nama_perusahaan}}
+                                {{$item->lowongan->perusahaan->nama_perusahaan}}
                             </div>
                             <div class="flex justify-center items-center w-3/12 font-poppins font-semibold text-center">
                                 Pembimbing
@@ -87,32 +79,28 @@
                             <div class="relative flex flex-col shadow-lg rounded-lg p-4 w-6/12 mr-3">
                                 <span class="font-semibold font-poppins text-gray-400">Total siswa yang mengajukan</span>
                                 <span class="font-bold font-poppins text-3xl">{{$siswaPengajuan}}</span>
+                                @if(Auth::user()->role == 'kakom')
                                 <div class="w-full flex justify-end">
-                                    @if(Auth::user()->role == 'kakom')
                                     <a href="/admin/kakom/daftarsiswa">
-                                    @else
-                                    <a href=""></a>
-                                    @endif
                                         <span class="p-2 border border-blue-500 text-blue-500 font-poppins font-semibold rounded-xl text-sm hover:bg-blue-500 hover:text-white transition ease-linear">
                                             Lebih Detail
                                         </span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                             <div class="relative flex flex-col shadow-lg rounded-lg p-4 w-6/12 mr-3">
                                 <span class="font-semibold font-poppins text-gray-400">Total siswa yang monitoring</span>
                                 <span class="font-bold font-poppins text-3xl">{{$siswaMonitoring}}</span>
+                                @if(Auth::user()->role == 'kakom')
                                 <div class="w-full flex justify-end">
-                                    @if(Auth::user()->role == 'kakom')
                                     <a href="/admin/kakom/daftarsiswa">
-                                    @else
-                                    <a href=""></a>
-                                    @endif
                                         <span class="p-2 border border-blue-500 text-blue-500 font-poppins font-semibold rounded-xl text-sm hover:bg-blue-500 hover:text-white transition ease-linear">
                                             Lebih Detail
                                         </span>
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -126,17 +114,16 @@
                         @endforeach
                         @if(Auth::user()->role == 'kakom')
                         <a href="/admin/kakom/akunpembimbing">
-                        @else
-                        <a href=""></a>
-                        @endif
                             <div class="w-full border border-black p-2 font-poppins font-bold shadow-lg rounded-xl mt-2 flex justify-center items-center hover:bg-white hover:border-white hover:text-[#7091F5] transition ease-linear">
                                 LIHAT LEBIH
                             </div>
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

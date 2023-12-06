@@ -19,30 +19,29 @@ class GuruSeeder extends Seeder
             'nama_guru' => 'Nazrilp',
             'jabatan' => 'Guru Jurusan',
             'gambar_guru' => 'user.jpg',
-            'jurusan' => 'TEDK',
+            'id_jurusan' => '7',
             'jenis_kelamin' => 'l',
         ]);
 
         DB::table('guru')->insert([
-                'nip' => '3280832',
-                'nik' => '820932',
-                'nama_guru' => 'Sudrajat Ruhiyat',
-                'jabatan' => 'Guru Jurusan',
-                'gambar_guru' => 'user.jpg',
-                'jurusan' => 'RPL',
-                'jenis_kelamin' => 'l',
-            ]);
+            'nip' => '3280832',
+            'nik' => '820932',
+            'nama_guru' => 'Sudrajat Ruhiyat',
+            'jabatan' => 'Guru Jurusan',
+            'gambar_guru' => 'user.jpg',
+            'id_jurusan' => '1',
+            'jenis_kelamin' => 'l',
+        ]);
 
 
         DB::table('guru')->insert([
-                'nip' => '20499284',
-                'nik' => '014322',
-                'nama_guru' => 'Nina Ninu',
-                'jabatan' => 'Guru NA',
-                'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEDK',
-                'jenis_kelamin' => 'p',
-            ]);
+            'nip' => '20499284',
+            'nik' => '014322',
+            'nama_guru' => 'Nina Ninu',
+            'jabatan' => 'Guru NA',
+            'gambar_guru' => 'user.jpg',
+            'jenis_kelamin' => 'p',
+        ]);
 
 
         DB::table('guru')->insert([
@@ -51,7 +50,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Rafi Putra',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'PSPT',
+                'id_jurusan' => '5',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -62,7 +61,6 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Mamah kita',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEI',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -73,7 +71,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Tati Titi',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'IOP',
+                'id_jurusan' => '3',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -84,7 +82,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => ' John Doe',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEDK',
+                'id_jurusan' => '7',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -95,7 +93,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Jane Smith',
                 'jabatan' => ' Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => ' SIJA',
+                'id_jurusan' => ' 6',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -106,7 +104,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => ' Bob Johnson,',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TOI',
+                'id_jurusan' => '3',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -117,7 +115,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Alice Brown',
                 'jabatan' => ' Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TPTU',
+                'id_jurusan' => '9',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -128,7 +126,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'David White',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'RPL',
+                'id_jurusan' => '1',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -139,20 +137,20 @@ class GuruSeeder extends Seeder
                 'nama_guru' => ' Sarah Lee',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEI',
+                'id_jurusan' => '8',
                 'jenis_kelamin' => 'p',
             ]);
 
 
         DB::table('guru')->insert([
-                'nip' => '789012345',
-                'nik' => '321987654',
-                'nama_guru' => 'Michael Davis',
-                'jabatan' => 'Guru Jurusan',
-                'gambar_guru' => 'user.jpg',
-                'jurusan' => 'MEKA',
-                'jenis_kelamin' => 'l',
-            ]);
+            'nip' => '789012345',
+            'nik' => '321987654',
+            'nama_guru' => 'Michael Davis',
+            'jabatan' => 'Guru Jurusan',
+            'gambar_guru' => 'user.jpg',
+            'id_jurusan' => '1',
+            'jenis_kelamin' => 'l',
+        ]);
 
 
         DB::table('guru')->insert([
@@ -161,7 +159,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => ' Jennifer Wilson',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'PSPT',
+                'id_jurusan' => '5',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -172,7 +170,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Richard Miller',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEDK',
+                'id_jurusan' => '7',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -183,7 +181,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => ' Lisa Smith',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'SIJA',
+                'id_jurusan' => '6',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -194,7 +192,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Andrew Johnson',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TOI',
+                'id_jurusan' => '3',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -205,7 +203,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Mary Brown',
                 'jabatan' => ' Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TPTU',
+                'id_jurusan' => '9',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -216,7 +214,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'James White',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'RPL',
+                'id_jurusan' => '1',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -227,7 +225,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Jessica Lee',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEI',
+                'id_jurusan' => '8',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -238,7 +236,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Daniel Davi',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'MEKA',
+                'id_jurusan' => '4',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -249,7 +247,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Emily Wilson',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'PSPT',
+                'id_jurusan' => '5',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -260,7 +258,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Robert Miller',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TEDK',
+                'id_jurusan' => '7',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -271,7 +269,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Michelle Smith',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'SIJA',
+                'id_jurusan' => '6',
                 'jenis_kelamin' => 'p',
             ]);
 
@@ -282,7 +280,7 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Christopher Johnson',
                 'jabatan' => 'Guru Jurusan',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TOI',
+                'id_jurusan' => '3',
                 'jenis_kelamin' => 'l',
             ]);
 
@@ -293,30 +291,30 @@ class GuruSeeder extends Seeder
                 'nama_guru' => 'Amanda Brown',
                 'jabatan' => 'Guru NA',
                 'gambar_guru' => 'user.jpg',
-                'jurusan' => 'TPTU',
+                'id_jurusan' => '9',
                 'jenis_kelamin' => 'p',
             ]);
 
 
         DB::table('guru')->insert([
-                'nip' => '298364223',
-                'nik' => '2092732341',
-                'nama_guru' => 'Hilmy Ganteng',
-                'jabatan' => 'Guru NA',
-                'gambar_guru' => 'user.jpg',
-                'jurusan' => 'RPL',
-                'jenis_kelamin' => 'l',
-            ]);
+            'nip' => '298364223',
+            'nik' => '2092732341',
+            'nama_guru' => 'Hilmy Ganteng',
+            'jabatan' => 'Guru NA',
+            'gambar_guru' => 'user.jpg',
+            'id_jurusan' => '1',
+            'jenis_kelamin' => 'l',
+        ]);
 
 
         DB::table('guru')->insert([
-                'nip' => '293709113',
-                'nik' => '203328423',
-                'nama_guru' => 'Ahmad Tamvan',
-                'jabatan' => 'Guru Jurusan',
-                'gambar_guru' => 'user.jpg',
-                'jurusan' => 'RPL',
-                'jenis_kelamin' => 'l',
-            ]);
+            'nip' => '293709113',
+            'nik' => '203328423',
+            'nama_guru' => 'Ahmad Tamvan',
+            'jabatan' => 'Guru Jurusan',
+            'gambar_guru' => 'user.jpg',
+            'id_jurusan' => '1',
+            'jenis_kelamin' => 'l',
+        ]);
     }
 }

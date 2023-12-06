@@ -12,4 +12,14 @@ class Angkatan extends Model
     protected $table = 'angkatan';
     protected $primaryKey = 'id_angkatan';
     public $timestamps = true;
+
+    public function lowongan()
+    {
+        return $this->hasMany(Lowongan::class,'id_angkatan');
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class,'id_angkatan');
+    }
 }

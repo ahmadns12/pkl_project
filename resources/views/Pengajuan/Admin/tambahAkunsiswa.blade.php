@@ -48,6 +48,9 @@
             @if(Auth::user()->role=='kakom')
             <form action="/admin/kakom/akunsiswa/store" method="POST" enctype="multipart/form-data">
             @endif
+            @if(Auth::user()->role=='superadmin')
+            <form action="/admin/superadmin/akunsiswa/store" method="POST" enctype="multipart/form-data">
+            @endif
                 @csrf
                 <input type="hidden" name="id">
                 <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
@@ -57,10 +60,10 @@
                             <div class="mt-3 w-1/2">
                                 <div class="w-full flex border-solid border rounded-lg">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Username</span>
+                                        <span class="text-md font-poppins font-semibold text-black">Email</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="username">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="email">
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -107,6 +110,7 @@
                 </div>
             </form>
         </div>
+        @include('Components.Footer.footer')
     </div>
     {{-- Content-end --}}
 

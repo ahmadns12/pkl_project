@@ -13,13 +13,8 @@ return new class extends Migration
     {
         Schema::create('formulir', function (Blueprint $table) {
             $table->id('id_formulir');
-            $table->integer('id_siswa');
-            $table->integer('id_perusahaan');
-            $table->string('posisi');
-            $table->integer('approve_hubin');
-            $table->integer('id_hubin')->nullable();
-            $table->integer('approve_kurikulum');
-            $table->integer('id_kurikulum')->nullable();
+            $table->integer('id_lowongan');
+            $table->integer('id_jurusan');
             $table->integer('approve_kakom');
             $table->integer('id_kakom')->nullable();
             $table->timestamps();

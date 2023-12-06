@@ -14,14 +14,18 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id('id_siswa');
             $table->integer('id_guru')->nullable();
+            $table->integer('id_siswadetail');
+            $table->integer('id_jurusan');
+            $table->integer('id_formulir')->nullable();
+            $table->integer('id_angkatan');
             $table->string('nis');
+            $table->string('nomor_telepon');
             $table->string('gambar_siswa')->nullable();
             $table->string('nama_siswa');
             $table->string('alamat');
             $table->enum('jenis_kelamin', ['l','p'])->default('l');
-            $table->string('jurusan');
-            // $table->integer('kd_jurusan');
-            $table->integer('angkatan');
+            $table->integer('status');
+            $table->integer('sudah_memilih');
             $table->timestamps();
         });
     }

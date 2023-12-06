@@ -25,7 +25,7 @@
                 </div>
             </div>
             {{-- Card-end --}}
-            @if (Auth::user()->is_choosen == '1')
+            @if (Auth::user()->siswa->status == '1')
                 <div class="bg-black w-[10px] h-[400px] mx-12 rounded-md hidden lg:inline"></div>
                 {{-- Card --}}
                 <div class="p-6 lg:p-0">

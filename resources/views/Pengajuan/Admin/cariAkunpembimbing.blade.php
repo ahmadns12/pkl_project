@@ -2,7 +2,7 @@
 <tr class="border border-solid rounded-lg text-center">
     <td class="text-md px-6 py-3 font-poppins">{{$item->id}}</td>
     <td class="text-md font-semibold px-6 py-3 font-poppins">{{ ucfirst($item->guru->nama_guru) }}</td>
-    <td class="text-md px-6 py-3 font-poppins">{{$item->username}}</td>
+    <td class="text-md px-6 py-3 font-poppins">{{$item->email}}</td>
     <td class="text-md px-6 py-3 font-poppins">{{$item->angkatan}}</td>
     <td class="text-md px-6 py-3 font-poppins">
         @if(Auth::user()->role=='hubin')
@@ -10,6 +10,9 @@
         @endif
         @if(Auth::user()->role=='kakom')
         <a href="/admin/kakom/akunpembimbing/edit/{{$item->id_guru}}">
+        @endif
+        @if(Auth::user()->role=='superadmin')
+        <a href="/admin/superadmin/akunpembimbing/edit/{{$item->id_guru}}">
         @endif
             <button class="bg-blue-500 border hover:border-blue-500 hover:bg-white p-1 pl-2 rounded-lg text-white hover:text-blue-500 transition ease-linear cursor-pointer pr-2 font-bold">
                 <i class="fa-solid fa-pen-to-square font-bold text-lg mr-1"></i>
@@ -46,16 +49,9 @@
                         </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        @if(Auth::user()->role=='hubin')
                         <a href="/admin/hubin/akunpembimbing/delete/{{$item->id}}" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm font-poppins">
                             Hapus
                         </a>
-                        @endif
-                        @if(Auth::user()->role=='kakom')
-                        <a href="/admin/kakom/akunpembimbing/delete/{{$item->id}}" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm font-poppins">
-                            Hapus
-                        </a>
-                        @endif
                         <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:w-auto sm:text-sm font-poppins" data-modal-hide="modal-delete-{{$item->id}}">
                             Batal                                                
                         </button>

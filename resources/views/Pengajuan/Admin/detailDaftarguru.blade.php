@@ -118,7 +118,11 @@
                                         <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan" value="{{$guru->jurusan}}" disabled>
+                                        @if ($guru->jurusan)
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan" value="{{$guru->jurusan->nama_jurusan}}" disabled>
+                                        @else
+                                        <input class="h-full w-full outline-none font-poppins font-bold" type="text" name="jurusan" value="Tidak memiliki jurusan / NA" disabled>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -150,6 +154,7 @@
             </form>
             @endforeach
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

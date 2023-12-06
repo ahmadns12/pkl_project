@@ -29,6 +29,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/cari-guru', [AdminController::class,'cariDaftarguru']);
     Route::get('/admin/cari-akunpembimbing', [AdminController::class,'cariAkunpembimbing']);
     Route::get('/admin/cari-angkatan', [AdminController::class,'cariAngkatan']);
+    Route::get('/admin/cari-jurusan', [AdminController::class,'cariJurusan']);
+    Route::get('/admin/cari-permintaan', [AdminController::class,'cariPermintaan']);
+    Route::get('/admin/cari-lowongan', [AdminController::class,'cariLowongan']);
+    Route::get('/admin/cari-panduan', [AdminController::class,'cariPanduan']);
 
     Route::get('/admin/kakom',[AdminController::class,'kakom'])->middleware('userAkses:kakom');
     Route::get('/admin/kakom/formsiswa',[AdminController::class,'formsiswa'])->middleware('userAkses:kakom')->name('kakomformsiswa');
@@ -36,6 +40,17 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/kakom/formsiswa/tambah',[AdminController::class,'tambahFormulir'])->middleware('userAkses:kakom')->name('tambahFormulirKakom');
     Route::post('/admin/kakom/formsiswa/approve',[AdminController::class,'approveKakom'])->middleware('userAkses:kakom');
     Route::post('/admin/kakom/formsiswa/store',[AdminController::class,'storeFormulirKakom'])->middleware('userAkses:kakom');
+    Route::get('/admin/kakom/permintaan',[AdminController::class,'permintaan'])->middleware('userAkses:kakom');
+    Route::post('/admin/kakom/permintaan/approve',[AdminController::class,'permintaanApprove'])->middleware('userAkses:kakom');
+    Route::post('/admin/kakom/permintaan/tolak',[AdminController::class,'permintaanTolak'])->middleware('userAkses:kakom');
+    
+    Route::get('/admin/kakom/lowongan',[AdminController::class,'lowongan'])->middleware('userAkses:kakom');
+    Route::get('/admin/kakom/lowongan/tambah',[AdminController::class,'tambahLowongan'])->middleware('userAkses:kakom')->name('tambahLowongan');
+    Route::post('/admin/kakom/lowongan/store',[AdminController::class, 'storeLowongan'])->middleware('userAkses:kakom');
+    Route::get('/admin/kakom/lowongan/edit/{id_lowongan}',[AdminController::class, 'editLowongan'])->middleware('userAkses:kakom');
+    Route::put('/admin/kakom/lowongan/update/{id_lowongan}',[AdminController::class, 'updateLowongan'])->middleware('userAkses:kakom');
+    Route::get('/admin/kakom/lowongan/delete/{id_lowongan}',[AdminController::class, 'deleteLowongan'])->middleware('userAkses:kakom');
+
     Route::get('/admin/kakom/daftarperusahaan',[AdminController::class,'daftarperusahaan'])->middleware('userAkses:kakom');
     Route::get('/admin/kakom/daftarperusahaan/detail/{id_perusahaan}',[AdminController::class,'detailDaftarperusahaan'])->middleware('userAkses:kakom');
     Route::get('/admin/kakom/daftarperusahaan/tambah',[AdminController::class,'tambahDaftarperusahaan'])->middleware('userAkses:kakom')->name('tambahPerusahaanKakom');
@@ -83,6 +98,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/hubin/daftarperusahaan/edit/{id_perusahaan}',[AdminController::class, 'editPerusahaan'])->middleware('userAkses:hubin');
     Route::put('/admin/hubin/daftarperusahaan/update/{id_perusahaan}',[AdminController::class, 'updatePerusahaanHubin'])->middleware('userAkses:hubin');
     Route::get('/admin/hubin/daftarperusahaan/delete/{id_perusahaan}',[AdminController::class, 'deletePerusahaanHubin'])->middleware('userAkses:hubin');
+    Route::get('/admin/hubin/panduan',[AdminController::class,'panduan'])->middleware('userAkses:hubin');
+    Route::get('doc/{pdf}',[AdminController::class,'preview'])->middleware('userAkses:hubin');
+    Route::get('/admin/hubin/panduan/tambah',[AdminController::class,'tambahPanduan'])->middleware('userAkses:hubin')->name('tambahPanduanHubin');
+    Route::post('/admin/hubin/panduan/store',[AdminController::class, 'storePanduanHubin'])->middleware('userAkses:hubin');
+    Route::get('/admin/hubin/panduan/edit/{id_panduan}',[AdminController::class, 'editPanduan'])->middleware('userAkses:hubin');
+    Route::put('/admin/hubin/panduan/update/{id_panduan}',[AdminController::class, 'updatePanduanHubin'])->middleware('userAkses:hubin');
+    Route::get('/admin/hubin/panduan/delete/{id_panduan}',[AdminController::class, 'deletePanduanHubin'])->middleware('userAkses:hubin');
 
     Route::get('/admin/kurikulum',[AdminController::class,'kurikulum'])->middleware('userAkses:kurikulum');
     Route::get('/admin/kurikulum/formsiswa',[AdminController::class,'formsiswa'])->middleware('userAkses:kurikulum')->name('kurikulumformsiswa');
@@ -90,6 +112,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/admin/kurikulum/formsiswa/approve',[AdminController::class,'approveKurikulum'])->middleware('userAkses:kurikulum');
 
     Route::get('/admin/superadmin',[AdminController::class,'superadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/formsiswa',[AdminController::class,'formsiswa'])->middleware('userAkses:superadmin')->name('superadminformsiswa');
     Route::get('/admin/superadmin/daftarakun',[AdminController::class,'daftarakun'])->middleware('userAkses:superadmin');
     Route::get('/admin/superadmin/angkatan',[AdminController::class,'angkatan'])->middleware('userAkses:superadmin');
     Route::get('/admin/superadmin/angkatan/tambah',[AdminController::class,'tambahAngkatan'])->middleware('userAkses:superadmin')->name('tambahAngkatan');
@@ -138,9 +161,40 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/superadmin/akunpembimbing/edit/{id_guru}',[AdminController::class, 'editAkunpembimbing'])->middleware('userAkses:superadmin');
     Route::put('/admin/superadmin/akunpembimbing/update/{id_guru}',[AdminController::class, 'updateAkunpembimbingSuperadmin'])->middleware('userAkses:superadmin');
     Route::get('/admin/superadmin/akunpembimbing/delete/{id}',[AdminController::class, 'deleteAkunpembimbingSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunhubin',[AdminController::class, 'akunhubin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunhubin/detail/{id_guru}',[AdminController::class,'detailAkunhubin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunhubin/tambah',[AdminController::class,'tambahAkunhubin'])->middleware('userAkses:superadmin')->name('tambahAkunhubinSuperadmin');
+    Route::post('/admin/superadmin/akunhubin/store',[AdminController::class,'storeAkunhubinSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunhubin/edit/{id_guru}',[AdminController::class, 'editAkunhubin'])->middleware('userAkses:superadmin');
+    Route::put('/admin/superadmin/akunhubin/update/{id_guru}',[AdminController::class, 'updateAkunhubinSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunhubin/delete/{id}',[AdminController::class, 'deleteAkunhubinSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkurikulum',[AdminController::class, 'akunkurikulum'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkurikulum/detail/{id_guru}',[AdminController::class,'detailAkunakunKurikulum'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkurikulum/tambah',[AdminController::class,'tambahAkunkurikulum'])->middleware('userAkses:superadmin')->name('tambahAkunkurikulumSuperadmin');
+    Route::post('/admin/superadmin/akunkurikulum/store',[AdminController::class,'storeAkunkurikulumSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkurikulum/edit/{id_guru}',[AdminController::class, 'editAkunkurikulum'])->middleware('userAkses:superadmin');
+    Route::put('/admin/superadmin/akunkurikulum/update/{id_guru}',[AdminController::class, 'updateAkunkurikulumSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkurikulum/delete/{id}',[AdminController::class, 'deleteAkunkurikulumSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkakom',[AdminController::class, 'akunkakom'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkakom/detail/{id_guru}',[AdminController::class,'detailAkunkakom'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkakom/tambah',[AdminController::class,'tambahAkunkakom'])->middleware('userAkses:superadmin')->name('tambahAkunkakomSuperadmin');
+    Route::post('/admin/superadmin/akunkakom/store',[AdminController::class,'storeAkunkakomSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkakom/edit/{id_guru}',[AdminController::class, 'editAkunkakom'])->middleware('userAkses:superadmin');
+    Route::put('/admin/superadmin/akunkakom/update/{id_guru}',[AdminController::class, 'updateAkunkakomSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/akunkakom/delete/{id}',[AdminController::class, 'deleteAkunkakomSuperadmin'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/history',[AdminController::class, 'history'])->middleware('userAkses:superadmin');
+    Route::get('/admin/superadmin/history/delete/{id_historylogin}',[AdminController::class, 'deleteHistorylogin'])->middleware('userAkses:superadmin');
 
     Route::get('/siswa/pemilihan', [SiswaController::class,'pemilihan'])->middleware('userAkses:siswa');
     Route::get('/siswa/pengajuan', [SiswaController::class, 'pengajuan'])->middleware('userAkses:siswa')->name('pengajuanSiswa');
+    Route::get('/siswa/lowongan', [SiswaController::class, 'lowongan'])->middleware('userAkses:siswa');
+    Route::get('/siswa/lowongan/detail/{id_lowongan}', [SiswaController::class, 'lowonganDetail'])->middleware('userAkses:siswa');
+    Route::post('/siswa/lowongan/ajukan', [SiswaController::class, 'lowonganAjukan'])->middleware('userAkses:siswa');
+    Route::get('/siswa/panduanartikel', [SiswaController::class, 'panduanartikel'])->middleware('userAkses:siswa');
+    Route::get('/siswa/panduanartikel/panduan', [SiswaController::class, 'panduan'])->middleware('userAkses:siswa');
+    Route::get('/siswa/profil', [SiswaController::class, 'profil'])->middleware('userAkses:siswa');
+    Route::put('/siswa/profil/update/{id_siswa}', [SiswaController::class, 'updateProfil'])->middleware('userAkses:siswa');
+    Route::put('/siswa/profil/detail/update/{id_siswadetail}', [SiswaController::class, 'updateProfilDetail'])->middleware('userAkses:siswa');
     Route::get('/siswa/monitoring', [SiswaController::class, 'monitoring'])->middleware('userAkses:siswa')->name('monitoringSiswa');
 
     Route::get('/logout',[LoginController::class,'logout']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,19 +14,24 @@ class LoginController extends Controller
 
     function login(Request $request){
         $request->validate([
-            'username'=>'required',
+            'email'=>'required',
             'password'=>'required'
         ],[
-            'username.required'=>'Username Wajib Diisi',
+            'email.required'=>'Email Wajib Diisi',
             'password.required'=>'Password Wajib Diisi'
         ]);
 
         $infologin = [
-            'username' => $request->username,
+            'email' => $request->email,
             'password' => $request->password,
         ];
 
         if(Auth::attempt($infologin)){
+            $userId = Auth::user()->id;
+            History::create([
+                'id' => $userId,
+            ]);
+
             if(Auth::user()->role == 'kakom'){
                 return redirect('admin/kakom');
             }elseif(Auth::user()->role == 'kurikulum'){
@@ -35,6 +41,8 @@ class LoginController extends Controller
             }elseif(Auth::user()->role == 'superadmin'){
                 return redirect('admin/superadmin');
             }elseif(Auth::user()->role == 'siswa'){
+                return redirect('siswa/pemilihan');
+            }elseif(Auth::user()->role == 'pembimbing'){
                 return redirect('siswa/pemilihan');
             }
         }else{

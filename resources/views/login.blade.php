@@ -30,11 +30,11 @@
 
                 <form action="/login" method="POST">
                     @csrf
-                    <!-- Username input -->
+                    <!-- Email input -->
                     <div class="relative mb-4 border-black border-4 rounded-md">
                         <input type="text"
                               class="peer outline-none block min-h-[auto] w-full rounded-0 px-3 py-[0.20rem] leading-[2.15] bg-white"
-                            placeholder="Username" name="username" />
+                            placeholder="Email" name="email" />
                     </div>
 
                     <!-- Password input -->
@@ -47,7 +47,7 @@
                     <!-- Submit button -->
                     <div class="flex items-center justify-center">
                         <button type="submit"
-                            class="inline-block w-6/12 rounded bg-primary px-7 pb-2.5 pt-3 text-sm uppercase leading-normal bg-black text-white font-poppins font-bold">
+                            class="inline-block w-6/12 rounded bg-primary px-7 pb-2.5 pt-3 text-sm uppercase leading-normal border border-black border-4 transition ease-linear bg-[#F4F4F4] hover:bg-black text-black hover:text-white font-poppins font-bold">
                             LOG IN
                         </button>
                     </div>

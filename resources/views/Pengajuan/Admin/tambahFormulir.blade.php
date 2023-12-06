@@ -54,37 +54,37 @@
                     <div class="block bg-transparent w-full overflow-x-auto">
                         <span class="font-poppins font-semibold">Form Siswa</span>
                         <div class="flex w-full">
-                            <div class="mt-3 w-1/2">
-                                <div class="w-full flex border-solid border rounded-lg">
-                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Pilih Siswa</span>
+                            <div class="mt-3 w-4/12">
+                                <div class="w-full flex flex-col rounded-lg border border-solid">
+                                    <div class="w-full bg-gray-200 p-2 rounded-t-lg">
+                                        <span class="w-full flex justify-center text-md font-poppins font-semibold text-black">Pilih Siswa</span>
                                     </div>
-                                    <div class="w-8/12 p-1 rounded-l-lg">
-                                        <select class="h-full w-full outline-none font-poppins" name="id_siswa">
-                                            @foreach ($siswa as $item)
-                                            <option value="{{$item->id_siswa}}">{{$item->nama_siswa}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w-full flex border-solid border rounded-lg mt-2">
-                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Posisi</span>
-                                    </div>
-                                    <div class="w-8/12 rounded-l-lg">
-                                        <input class=" p-2 h-full w-full outline-none font-poppins" type="text" name="posisi">
+                                    <div class="w-full rounded-b-lg h-fit p-2 font-poppins">
+                                        @foreach ($siswa as $item)
+                                            
+                                        <div class="flex">
+                                            <div class="flex items-center h-5">
+                                                <input id="helper-checkbox-{{$item->id_siswa}}" aria-describedby="helper-checkbox-text-{{$item->id_siswa}}" type="checkbox" name="siswa[]" value="{{$item->id_siswa}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            </div>
+                                            <div class="ms-2 text-sm">
+                                                <label for="helper-checkbox-{{$item->id_siswa}}" class="font-medium text-gray-900 dark:text-gray-300">{{$item->nama_siswa}}</label>
+                                                <p id="helper-checkbox-text-{{$item->id_siswa}}" class="text-xs font-normal text-gray-500 dark:text-gray-300">NIS : {{$item->nis}}</p>
+                                            </div>
+                                        </div>
+
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                            <div class="ml-2 mt-1 w-1/2">
+                            <div class="ml-2 mt-1 w-8/12">
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Pilih Perusahaan</span>
+                                        <span class="text-md font-poppins font-semibold text-black">Pilih Lowongan</span>
                                     </div>
                                     <div class="w-8/12 p-1 rounded-l-lg">
-                                        <select class="h-full w-full outline-none font-poppins" name="id_perusahaan">
-                                            @foreach ($perusahaan as $item)
-                                            <option value="{{$item->id_perusahaan}}">{{$item->nama_perusahaan}}</option>
+                                        <select class="h-full w-full outline-none font-poppins" name="id_lowongan">
+                                            @foreach ($lowongan as $item)
+                                            <option value="{{$item->id_lowongan}}">{{$item->perusahaan->nama_perusahaan}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -100,6 +100,7 @@
                 </div>
             </form>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

@@ -25,13 +25,18 @@ class User extends Authenticatable
         return $this->belongsTo(Guru::class, 'id_guru');
     }
 
+    public function history()
+    {
+        return $this->hasMany(History::class, 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
+        'email',
         'password',
         'id_siswa',
         'nip',

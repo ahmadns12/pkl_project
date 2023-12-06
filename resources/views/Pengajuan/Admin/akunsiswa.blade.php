@@ -51,6 +51,26 @@
                         </h2>
                     @endif
                 </div>
+                <div class="flex">
+                    {{-- Kakom --}}
+                    <div class="w-3/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4">
+                        <span class="font-poppins font-semibold text-gray-500">Total Akun Siswa</span>
+                        <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalAkunsiswa}}</span>
+                    </div>
+                    @if(Auth::user()->role=='kakom')
+                    <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahAkunsiswaKakom') }}'">
+                        Tambah
+                        <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                    </div>
+                    @endif
+                    @if(Auth::user()->role=='superadmin')
+                    <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahAkunsiswaSuperadmin') }}'">
+                        Tambah
+                        <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
+                    </div>
+                    @endif
+                    {{-- Kakom-END --}}
+                </div>
                 <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                     {{-- Search --}}
                     <div class="p-2 mb-2">
@@ -75,12 +95,12 @@
                                 <tr class="border border-solid rounded-lg text-center">
                                     <td class="text-md px-6 py-3 font-poppins">{{$item->id}}</td>
                                     <td class="text-md font-semibold px-6 py-3 font-poppins">{{ ucfirst($item->siswa->nama_siswa) }}</td>
-                                    <td class="text-md px-6 py-3 font-poppins">{{$item->username}}</td>
+                                    <td class="text-md px-6 py-3 font-poppins">{{$item->email}}</td>
                                     <td class="text-md px-6 py-3 font-poppins">
-                                        @if($item->is_choosen == '0')
+                                        @if($item->siswa->status == '0')
                                         <span class="text-red-500 font-semibold">Pengajuan</span>
                                         @endif
-                                        @if($item->is_choosen == '1')
+                                        @if($item->siswa->status == '1')
                                         <span class="text-blue-500 font-semibold">Monitoring</span>
                                         @endif
                                     </td>
@@ -91,6 +111,9 @@
                                         @endif
                                         @if(Auth::user()->role=='kakom')
                                         <a href="/admin/kakom/akunsiswa/edit/{{$item->id_siswa}}">
+                                        @endif
+                                        @if(Auth::user()->role=='superadmin')
+                                        <a href="/admin/superadmin/akunsiswa/edit/{{$item->id_siswa}}">
                                         @endif
                                             <button class="bg-blue-500 border hover:border-blue-500 hover:bg-white p-1 pl-2 rounded-lg text-white hover:text-blue-500 transition ease-linear cursor-pointer pr-2 font-bold">
                                                 <i class="fa-solid fa-pen-to-square font-bold text-lg mr-1"></i>
@@ -127,16 +150,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                                        @if(Auth::user()->role=='hubin')
-                                                        <a href="/admin/hubin/akunsiswa/delete/{{$item->id}}" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm font-poppins">
-                                                            Hapus
-                                                        </a>
-                                                        @endif
-                                                        @if(Auth::user()->role=='kakom')
                                                         <a href="/admin/kakom/akunsiswa/delete/{{$item->id}}" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm font-poppins">
                                                             Hapus
                                                         </a>
-                                                        @endif
                                                         <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:w-auto sm:text-sm font-poppins" data-modal-hide="modal-delete-{{$item->id}}">
                                                             Batal                                                
                                                         </button>
@@ -154,24 +170,8 @@
                     <br>
                     {{ $dataakunsiswa->links('pagination::tailwind') }}
                 </div>
-
-                {{-- Footer --}}
-                <div class="flex">
-                    {{-- Kakom --}}
-                    <div class="w-3/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4">
-                        <span class="font-poppins font-semibold text-gray-500">Total Akun Siswa</span>
-                        <span class="font-poppins font-bold text-[#8AA7FF] text-2xl p-2 text-center">{{$totalAkunsiswa}}</span>
-                    </div>
-                    @if(Auth::user()->role=='kakom')
-                    <div class="w-2/12 relative flex flex-col shadow-lg mb-6 rounded-lg p-4 mr-4 hover:bg-[#8AA7FF] transition ease-linear font-poppins font-semibold text-gray-500 hover:text-white cursor-pointer text-center"  onclick="window.location='{{ route('tambahAkunsiswaKakom') }}'">
-                        Tambah
-                        <i class="fa-solid fa-plus w-full h-full flex justify-center items-center text-2xl"></i>
-                    </div>
-                    @endif
-                    {{-- Kakom-END --}}
-                </div>
-                {{-- Footer-END --}}
             </div>
+            @include('Components.Footer.footer')
         </div>
     {{-- Content-end --}}
 

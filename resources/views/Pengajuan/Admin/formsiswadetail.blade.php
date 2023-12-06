@@ -61,85 +61,81 @@
                 <input type="hidden" name="id_formulir" value="{{ $dataformulir->id_formulir }}">
                 <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                     <div class="block bg-transparent w-full overflow-x-auto">
-                        <span class="font-poppins font-semibold">Biodata Siswa</span>
-                        <div class="flex mt-3">
-                            <div class="w-6/12 flex border-solid border rounded-lg">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">NIS</span>
+                        @if($dataformulir->siswa)
+                            @foreach($dataformulir->siswa as $item)
+                                <span class="font-poppins font-semibold">Biodata Siswa</span>
+                                <div class="flex mt-3">
+                                    <div class="w-6/12 flex border-solid border rounded-lg">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">NIS</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$item->nis}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-6/12 flex border-solid border rounded-lg ml-3">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">Nama Lengkap</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$item->nama_siswa}}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->siswa->nis}}</span>
+                                <div class="flex mt-3">
+                                    <div class="w-6/12 flex border-solid border rounded-lg">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">Alamat Siswa</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$item->alamat}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="w-6/12 flex border-solid border rounded-lg ml-3">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">No. Handphone</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$item->nomor_telepon}}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="w-6/12 flex border-solid border rounded-lg ml-3">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">Nama Lengkap</span>
+                                <div class="flex mt-3">
+                                    <div class="w-6/12 flex border-solid border rounded-lg">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">Jenis Kelamin</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">
+                                                @if($item->jenis_kelamin == 'l')
+                                                Laki-Laki
+                                                @else
+                                                Perempuan
+                                                @endif
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="w-6/12 flex border-solid border rounded-lg ml-3">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$item->jurusan->nama_jurusan}}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->siswa->nama_siswa}}</span>
+                                <div class="flex mt-3 mb-3">
+                                    <div class="w-6/12 flex border-solid border rounded-lg">
+                                        <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins font-semibold text-black">Posisi</span>
+                                        </div>
+                                        <div class="w-8/12 p-2 rounded-l-lg">
+                                            <span class="text-md font-poppins text-black">{{$dataformulir->lowongan->posisi}}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="flex mt-3">
-                            <div class="w-6/12 flex border-solid border rounded-lg">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">Alamat Siswa</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->siswa->alamat}}</span>
-                                </div>
-                            </div>
-                            <div class="w-6/12 flex border-solid border rounded-lg ml-3">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">No. Handphone</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->siswa->alamat_siswa}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex mt-3">
-                            <div class="w-6/12 flex border-solid border rounded-lg">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">Jenis Kelamin</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">
-                                        @if($dataformulir->siswa->jenis_kelamin == 'l')
-                                        Laki-Laki
-                                        @else
-                                        Perempuan
-                                        @endif
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="w-6/12 flex border-solid border rounded-lg ml-3">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">No. Orang Tua</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->no_ortu}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex mt-3 mb-3">
-                            <div class="w-6/12 flex border-solid border rounded-lg">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">Posisi</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->posisi}}</span>
-                                </div>
-                            </div>
-                            <div class="w-6/12 flex border-solid border rounded-lg ml-3">
-                                <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
-                                </div>
-                                <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->siswa->jurusan}}</span>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                         <span class="font-poppins font-semibold">Biodata Perusahaan</span>
                         <div class="flex mt-3">
                             <div class="w-6/12 flex border-solid border rounded-lg">
@@ -147,7 +143,7 @@
                                     <span class="text-md font-poppins font-semibold text-black">Nama</span>
                                 </div>
                                 <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->perusahaan->nama_perusahaan}}</span>
+                                    <span class="text-md font-poppins text-black">{{$dataformulir->lowongan->perusahaan->nama_perusahaan}}</span>
                                 </div>
                             </div>
                             <div class="w-6/12 flex border-solid border rounded-lg ml-3">
@@ -155,7 +151,7 @@
                                     <span class="text-md font-poppins font-semibold text-black">Alamat</span>
                                 </div>
                                 <div class="w-8/12 p-2 rounded-l-lg">
-                                    <span class="text-md font-poppins text-black">{{$dataformulir->perusahaan->alamat_perusahaan}}</span>
+                                    <span class="text-md font-poppins text-black">{{$dataformulir->lowongan->perusahaan->alamat_perusahaan}}</span>
                                 </div>
                             </div>
                         </div>
@@ -168,6 +164,7 @@
                 </div>
             </form>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

@@ -61,10 +61,10 @@
                             <div class="mt-3 w-1/2">
                                 <div class="w-full flex border-solid border rounded-lg">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Username</span>
+                                        <span class="text-md font-poppins font-semibold text-black">Email</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="username" value="{{$akunsiswa->username}}">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="email" value="{{$akunsiswa->email}}">
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -78,17 +78,13 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="w-full flex border-solid border rounded-lg mt-2">
-                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Status</span>
+                                @if ($errors->any())
+                                    <div class="relative mb-2">
+                                        @foreach ($errors->all() as $item)
+                                            <div class="font-body font-bold text-red-500 text-center">{{$item}}</div>
+                                        @endforeach
                                     </div>
-                                    <div class="w-8/12 p-1 rounded-l-lg">
-                                        <select class="h-full w-full outline-none font-poppins" name="is_choosen">
-                                            <option value="0">Pengajuan</option>
-                                            <option value="1">Monitoring</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                             <div class="ml-2 mt-1 w-1/2">
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -120,6 +116,7 @@
                 </div>
             </form>
         </div>
+        @include('Components.Footer.footer')
     </div>
     {{-- Content-end --}}
 

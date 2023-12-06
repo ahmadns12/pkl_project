@@ -5,7 +5,6 @@
       <div class="flex justify-center items-center">
         <img class="w-[120px] lg:w-[100px] lg:h-[100px]" src="{{ asset('img/logo_smk.png') }}" alt="">
         <div class="w-4"></div>
-        <img class="w-[120px] lg:w-[100px] lg:h-[100px]" src="{{ asset('img/logo_smk.png') }}" alt="">
       </div>
       <div class="text-white font-poppins font-bold text-2xl lg:text-xl flex justify-center mt-4 lg:mt-0">SMK Negeri 1 Cimahi</div>
     </div>

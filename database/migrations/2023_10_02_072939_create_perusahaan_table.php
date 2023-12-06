@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('alamat_perusahaan');
             $table->string('contact_person');
-            // ID Ubah menjadi ID JURUSAN KALO UDH FIX
-            $table->string('jurusan');
             $table->string('gambar_perusahaan')->nullable();
             $table->timestamps();
         });

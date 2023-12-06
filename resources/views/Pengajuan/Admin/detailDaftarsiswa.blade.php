@@ -120,21 +120,13 @@
                                             @endif
                                         </select>
                                     </div>
-                                </div>                                
-                                <div class="w-full flex border-solid border rounded-lg mt-2">
-                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
-                                        <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
-                                    </div>
-                                    <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan" value="{{$siswa->jurusan}}" disabled>
-                                    </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
                                         <span class="text-md font-poppins font-semibold text-black">Angkatan</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="angkatan" value="{{$siswa->angkatan}}" disabled>
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="angkatan" value="{{$siswa->angkatan->angkatan}}" disabled>
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -167,11 +159,117 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mt-4">
+                            <span class="font-poppins font-semibold">Data Lebih Lanjut</span>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="mt-3 w-1/2">
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nama Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_bapak" placeholder="Nama Orang tua Siswa..." disabled value="{{$siswa->siswadetail->nama_bapak}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Pekerjaan Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="pekerjaan_bapak" placeholder="Pekerjaan Orang tua Siswa..." disabled value="{{$siswa->siswadetail->pekerjaan_bapak}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nomor Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nomor_telepon_bapak" placeholder="Nomor Telepon Orang tua Siswa..." disabled value="{{$siswa->siswadetail->nomor_telepon_bapak}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="umur_bapak" placeholder="Umur Orang tua Siswa..." disabled value="{{$siswa->siswadetail->umur_bapak}}">
+                                    </div>
+                                </div>                                
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nama Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_ibu" placeholder="Nama Orang tua Siswa..." disabled value="{{$siswa->siswadetail->nama_ibu}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Pekerjaan Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="pekerjaan_ibu" placeholder="Pekerjaan Orang tua Siswa..." disabled value="{{$siswa->siswadetail->pekerjaan_ibu}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ml-2 mt-1 w-1/2">
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nomor Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="number" name="nomor_telepon_ibu" placeholder="Nomor Telepon Orang tua Siswa..." disabled value="{{$siswa->siswadetail->nomor_telepon_ibu}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="number" name="umur_ibu" placeholder="Umur Telepon Orang tua Siswa..." disabled value="{{$siswa->siswadetail->umur_ibu}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Siswa</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="umur" placeholder="Umur Siswa..." disabled value="{{$siswa->siswadetail->umur}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Agama Siswa</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="agama" placeholder="Agama Siswa..." disabled value="{{$siswa->siswadetail->agama}}">
+                                    </div>
+                                </div>                                
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Tempat Lahir</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="tempat_lahir" placeholder="Tempat lahir Siswa..." disabled value="{{$siswa->siswadetail->tempat_lahir}}">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Tanggal Lahir</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="date" name="tanggal_lahir" placeholder="Tanggal lahir Siswa..." disabled value="{{$siswa->siswadetail->tanggal_lahir}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
             @endforeach
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

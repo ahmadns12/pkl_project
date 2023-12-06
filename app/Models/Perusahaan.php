@@ -13,8 +13,16 @@ class Perusahaan extends Model
     protected $primaryKey = 'id_perusahaan';
     public $timestamps = true;
 
-    public function perusahaan()
+    protected $fillable = [
+        'nama_perusahaan',
+        'deskripsi',
+        'alamat_perusahaan',
+        'contact_person',
+        'gambar_perusahaan',
+    ];
+
+    public function lowongan()
     {
-        return $this->hasOne(Perusahaan::class, 'id_perusahaan');
+        return $this->hasMany(Lowongan::class, 'id_perusahaan');
     }
 }

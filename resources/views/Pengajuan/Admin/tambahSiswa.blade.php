@@ -56,6 +56,7 @@
             @endif
                 @csrf
                 <input type="hidden" name="id_siswa">
+                <input type="hidden" name="id_siswadetail">
                 <div class="relative flex flex-col shadow-lg mb-6 rounded-lg p-4">
                     <div class="block bg-transparent w-full overflow-x-auto">
                         <span class="font-poppins font-semibold">Siswa</span>
@@ -77,6 +78,8 @@
                                         <span class="text-md font-poppins font-semibold text-black">Pembimbing</span>
                                     </div>
                                     <select class="p-2 h-full w-full outline-none font-poppins" name="id_guru">
+                                        <option disabled>Pilih Pembimbing</option>
+                                        <option value="">Belum ada pembimbing</option>
                                         @foreach ($guru as $item)
                                         <option value="{{$item->id_guru}}">{{ucfirst($item->nama_guru)}}</option>
                                         @endforeach
@@ -89,7 +92,7 @@
                                         <span class="text-md font-poppins font-semibold text-black">NIS</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nis">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nis" placeholder="NIS Siswa...">
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -97,7 +100,7 @@
                                         <span class="text-md font-poppins font-semibold text-black">Nama</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_siswa">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_siswa" placeholder="Nama Siswa...">
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -105,7 +108,7 @@
                                         <span class="text-md font-poppins font-semibold text-black">Alamat</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="alamat">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="alamat" placeholder="Alamat Siswa...">
                                     </div>
                                 </div>
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
@@ -114,25 +117,161 @@
                                     </div>
                                     <div class="w-8/12 p-1 rounded-l-lg">
                                         <select class="h-full w-full outline-none font-poppins" name="jenis_kelamin">
+                                            <option disabled>Jenis Kelamin</option>
                                             <option value="l">Laki-Laki</option>
                                             <option value="p">Perempuan</option>
                                         </select>
                                     </div>
                                 </div>                                
+                                @if(Auth::user()->role == 'superadmin')
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
+                                    </div>
+                                    <div class="w-8/12 p-1 rounded-l-lg">
+                                        <select class="h-full w-full outline-none font-poppins" name="id_jurusan">
+                                            <option disabled>Jurusan</option>
+                                            @foreach ($jurusan as $item)
+                                            <option value="{{$item->id_jurusan}}">{{$item->nama_jurusan}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                @endif
+                                {{-- @if(Auth::user()->role == 'kakom')
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
                                         <span class="text-md font-poppins font-semibold text-black">Jurusan</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="jurusan">
+                                        <input class="h-full w-full outline-none font-poppins" type="hidden" name="jurusan" placeholder="Jurusan...">
                                     </div>
                                 </div>
+                                @endif --}}
                                 <div class="w-full flex border-solid border rounded-lg mt-2">
                                     <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
                                         <span class="text-md font-poppins font-semibold text-black">Angkatan</span>
                                     </div>
                                     <div class="w-8/12 p-2 rounded-l-lg">
-                                        <input class="h-full w-full outline-none font-poppins" type="text" name="angkatan">
+                                        <select class="h-full w-full outline-none font-poppins" name="id_angkatan">
+                                            <option disabled>Tahun Ajaran</option>
+                                            @foreach ($angkatan as $item)
+                                            <option value="{{$item->id_angkatan}}">{{$item->angkatan}} / {{$item->tahun_pembelajaran}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nomor Telepon</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nomor_telepon" placeholder="Nomor telepon Siswa...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <span class="font-poppins font-semibold">Data Lebih Lanjut</span>
+                        </div>
+                        <div class="flex w-full">
+                            <div class="mt-3 w-1/2">
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nama Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_bapak" placeholder="Nama Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Pekerjaan Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="pekerjaan_bapak" placeholder="Pekerjaan Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nomor Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nomor_telepon_bapak" placeholder="Nomor Telepon Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Bapak</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="umur_bapak" placeholder="Umur Orang tua Siswa...">
+                                    </div>
+                                </div>                                
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nama Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="nama_ibu" placeholder="Nama Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Pekerjaan Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="pekerjaan_ibu" placeholder="Pekerjaan Orang tua Siswa...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ml-2 mt-1 w-1/2">
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Nomor Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="number" name="nomor_telepon_ibu" placeholder="Nomor Telepon Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Ibu</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="number" name="umur_ibu" placeholder="Umur Telepon Orang tua Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Umur Siswa</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="umur" placeholder="Umur Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Agama Siswa</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="agama" placeholder="Agama Siswa...">
+                                    </div>
+                                </div>                                
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Tempat Lahir</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="text" name="tempat_lahir" placeholder="Tempat lahir Siswa...">
+                                    </div>
+                                </div>
+                                <div class="w-full flex border-solid border rounded-lg mt-2">
+                                    <div class="w-4/12 bg-gray-200 p-2 rounded-l-lg">
+                                        <span class="text-md font-poppins font-semibold text-black">Tanggal Lahir</span>
+                                    </div>
+                                    <div class="w-8/12 p-2 rounded-l-lg">
+                                        <input class="h-full w-full outline-none font-poppins" type="date" name="tanggal_lahir" placeholder="Tanggal lahir Siswa...">
                                     </div>
                                 </div>
                             </div>
@@ -146,6 +285,7 @@
                 </div>
             </form>
         </div>
+        @include('Components/Footer/footer')
     </div>
     {{-- Content-end --}}
 

@@ -15,47 +15,48 @@ class DummyUserSeeder extends Seeder
     {
         $userData = [
             [
-                'username'=>'Hubin',
+                'email'=>'Hubin@gmail.com',
+                'id_guru' => '12',
                 'role'=>'hubin',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Kakom',
+                'email'=>'Kakom@gmail.com',
                 'role'=>'kakom',
+                'id_guru' => '13',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Kurikulum',
+                'email'=>'Kurikulum@gmail.com',
+                'nama_kurikulum'=>'Suisei',
                 'role'=>'kurikulum',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Goku',
+                'email'=>'Goku@gmail.com',
                 'role'=>'superadmin',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Ahmad',
+                'email'=>'Ahmad@gmail.com',
                 'role'=>'siswa',
                 'id_siswa'=>'1',
                 'angkatan'=>'48',
-                'is_choosen'=>'0',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Altria',
+                'email'=>'Altria@gmail.com',
                 'role'=>'siswa',
-                'is_choosen'=>'1',
                 'id_siswa'=>'2',
                 'angkatan'=>'48',
                 'password'=>bcrypt('123456')
             ],
             [
-                'username'=>'Sensei',
+                'email'=>'Sensei@gmail.com',
                 'role'=>'pembimbing',
                 'id_guru'=>'1',
                 'angkatan'=>'48',
